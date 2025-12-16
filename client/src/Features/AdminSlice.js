@@ -1,0 +1,60 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+// الحالة الأولية للأدمن
+const initialState = {
+  admin: null,       // بيانات الأدمن الحالية
+  isLogin: false,    // هل الأدمن مسجل دخول
+  status: null,      // 'loading', 'success', 'rejected'
+  msg: null,         // رسالة السيرفر أو الخطأ
+};
+
+// Async thunk لتسجيل دخول الأدمن
+export const loginAdmin = createAsyncThunk(
+  "admin/loginAdmin",
+  async (adminData, { rejectWithValue }) => {
+    try {
+      const { email, password } = adminData;
+      const response = await axios.post("http://localhost:3001/admin/login", { email, password });
+
+      return { admin: response.data.admin, msg: response.data.msg };
+    } catch (error) {
+      return rejectWithValue({ msg: error.response?.data?.msg || "Login failed" });
+    }
+  }
+);
+
+export const adminSlice = createSlice({
+  name: "admin",
+  initialState,
+  reducers: {
+    logoutAdmin: (state) => {
+      state.admin = null;
+      state.isLogin = false;
+      state.status = null;
+      state.msg = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginAdmin.pending, (state) => {
+        state.status = "loading";
+        state.msg = null;
+      })
+      .addCase(loginAdmin.fulfilled, (state, action) => {
+        state.status = "success";
+        state.isLogin = true;
+        state.admin = action.payload.admin;
+        state.msg = action.payload.msg;
+      })
+      .addCase(loginAdmin.rejected, (state, action) => {
+        state.status = "rejected";
+        state.isLogin = false;
+        state.admin = null;
+        state.msg = action.payload?.msg || "حدث خطأ أثناء تسجيل الدخول";
+      });
+  },
+});
+
+export const { logoutAdmin } = adminSlice.actions;
+export default adminSlice.reducer;
