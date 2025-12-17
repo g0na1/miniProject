@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import path from "path";
 import multer from "multer";
 import UserModel from "./Models/UserModel.js";
-import adminModel from "./Models/adminModel.js";
+import adminModel from "./Models/AdminModel.js";
 import CreamModel from "./Models/CreamModel.js";
 import IncenseModel from "./Models/IncenseModel.js";
 import PerfumeModel from "./Models/PerfumeModel.js";
