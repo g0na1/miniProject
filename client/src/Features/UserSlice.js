@@ -89,7 +89,7 @@ export const userSlice = createSlice({
         state.status = "rejected";
         state.isLogin = false;
         state.user = null;
-        state.msg = action.payload?.msg || "حدث خطأ أثناء تسجيل الدخول";
+        state.msg = action.payload?.msg || "error when login";
       });
   },
 });

@@ -9,8 +9,8 @@ export default function About() {
  const getGeoLocationData = async () => {
     try { 
       const response = await  axios.get(`${process.env.REACT_APP_LOCAION_API_KEY}`)
-      setCountry(response.data.location.country); // Set country
-      setRegion(response.data.location.region); // Set region
+      setCountry(response.data.location.country); 
+      setRegion(response.data.location.region); 
      
     } catch (error) {
       console.error("Error fetching geolocation data:", error.message);
