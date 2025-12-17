@@ -1,6 +1,7 @@
 import { UsersData } from "../ExampleData";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import * as ENV from "../config";
 
 const initialState = {
   users: UsersData,
@@ -16,7 +17,7 @@ export const registerUser = createAsyncThunk(
     try {
       const { name, email, password } = userData;
       const response = await axios.post(
-        "http://localhost:3001/registerUser",
+        `${ENV.SERVER_URL}/registerUser`,
         { name, email, password }
       );
       return { user: response.data.user, msg: response.data.msg };
@@ -89,7 +90,7 @@ export const userSlice = createSlice({
         state.status = "rejected";
         state.isLogin = false;
         state.user = null;
-        state.msg = action.payload?.msg || "حدث خطأ أثناء تسجيل الدخول";
+        state.msg = action.payload?.msg || "erorr when sign in ";
       });
   },
 });

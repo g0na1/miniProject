@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import * as ENV from "../config";
 
-const BASE_URL = "http://localhost:3001/perfumes"; 
+const BASE_URL = `${ENV.SERVER_URL}/perfumes`; 
 
 export const fetchPerfumes = createAsyncThunk("perfume/fetchPerfumes", async () => {
   const res = await axios.get(BASE_URL);
