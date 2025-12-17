@@ -1,20 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import * as ENV from "../config";
 
 export const removeFromCartDB = createAsyncThunk(
   "cart/removeFromCartDB",
   async (cartItemId) => {
-    await axios.delete(`${ENV.SERVER_URL}/api/cart/${cartItemId}`);
-
-  
+    await axios.delete(
+      `http://localhost:3001/api/cart/${cartItemId}`
+    );
     return cartItemId;
   }
 );
 export const addToCartDB = createAsyncThunk(
   "cart/addToCartDB",
   async (item) => {
-    const res = await axios.post(`${ENV.SERVER_URL}/api/cart/add`, {
+    const res = await axios.post("http://localhost:3001/api/cart/add", {
       userId: "123",     
       productId: item._id,
       name: item.name,
@@ -28,8 +27,7 @@ export const addToCartDB = createAsyncThunk(
 export const fetchCartDB = createAsyncThunk(
   "cart/fetchCartDB",
   async (userId) => {
-  const res = await axios.get(`${ENV.SERVER_URL}/api/cart/${userId}`);
-
+    const res = await axios.get(`http://localhost:3001/api/cart/${userId}`);
     return res.data;
   }
 );

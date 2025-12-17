@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import * as ENV from "../config";
 
-const BASE_URL = `${ENV.SERVER_URL}/creams`;
+const BASE_URL = "http://localhost:3001/creams";
 
 export const fetchCreams = createAsyncThunk("cream/fetchCreams", async () => {
   const res = await axios.get(BASE_URL);

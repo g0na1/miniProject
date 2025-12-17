@@ -273,7 +273,7 @@ app.delete("/api/cart/:id", async (req, res) => {
 app.use(errorHandler);
 
 
-app.listen(process.env.PORT,() => {
+app.listen(process.env.PORT,"0.0.0.0" , () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
 

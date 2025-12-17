@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import * as ENV from "../config";
 
 const initialState = {
   admin: null,
@@ -15,9 +14,9 @@ export const loginAdmin = createAsyncThunk(
     try {
       const { email, password } = adminData;
       const response = await axios.post(
-  `${ENV.SERVER_URL}/admin/login`,
-  { email, password }
-);
+        "http://localhost:3001/admin/login",
+        { email, password }
+      );
 
       return { admin: response.data.admin, msg: response.data.msg };
     } catch (error) {
