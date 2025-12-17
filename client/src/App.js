@@ -18,6 +18,7 @@ import ManagePerfumes from "./Components/ManagePerfumes";
 import ManageIncense from "./Components/ManageIncense";
 import Cart from "./Components/cart";
 import Payment from "./Components/Payment";
+import About from "./Components/About";
 const App = () => {
   return (
     <Router>
@@ -40,6 +41,7 @@ const App = () => {
              <Route path="/minc" element={<ManageIncense/>} />
              <Route path="/cart" element={<Cart/>} />
              <Route path="/payment" element={<Payment/>} />
+             <Route path="/about" element={<About/>} />
             
           </Routes>
         </div>

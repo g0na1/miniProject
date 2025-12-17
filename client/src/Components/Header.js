@@ -23,7 +23,7 @@ const Header = () => {
               <DropdownMenu end>
                 <DropdownItem header>Your Profile</DropdownItem>
                 <DropdownItem>
-                  <Link to="/settings" className="dropdown-link">Settings</Link>
+                  <Link to="/about" className="dropdown-link">about us</Link>
                 </DropdownItem>
                 <DropdownItem>
                   <Link to="/" className="dropdown-link">Logout</Link>
