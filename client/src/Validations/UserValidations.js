@@ -18,7 +18,6 @@ export const userSchemaValidation = yup.object().shape({
     .required("Confirm Password is required"),
 });
 
-// Schema للفورم تسجيل الدخول (Login)
 export const loginSchemaValidation = yup.object().shape({
   email: yup
     .string()

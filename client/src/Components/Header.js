@@ -3,7 +3,7 @@ import user from "../Images/user.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; // تأكد من تثبيت Font Awesome
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
 import "./header.css";
 
 const Header = () => {
@@ -20,15 +20,20 @@ const Header = () => {
               <DropdownToggle nav>
                 <img src={user} className="profile-logo" alt="User Profile" />
               </DropdownToggle>
+
               <DropdownMenu end>
+              
                 <DropdownItem header>Your Profile</DropdownItem>
                 <DropdownItem>
                   <Link to="/about" className="dropdown-link">about us</Link>
                 </DropdownItem>
+
                 <DropdownItem>
                   <Link to="/" className="dropdown-link">Logout</Link>
                 </DropdownItem>
+
               </DropdownMenu>
+
             </UncontrolledDropdown>
           </Col>
 
