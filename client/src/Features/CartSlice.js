@@ -14,7 +14,7 @@ export const addToCartDB = createAsyncThunk(
   "cart/addToCartDB",
   async (item) => {
     const res = await axios.post("http://localhost:3001/api/cart/add", {
-      userId: "123",       // لاحقًا من auth
+      userId: "123",     
       productId: item._id,
       name: item.name,
       price: item.price,
@@ -24,7 +24,6 @@ export const addToCartDB = createAsyncThunk(
   }
 );
 
-// ➖ جلب السلة من DB (اختياري)
 export const fetchCartDB = createAsyncThunk(
   "cart/fetchCartDB",
   async (userId) => {

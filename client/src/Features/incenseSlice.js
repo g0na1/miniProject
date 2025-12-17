@@ -1,23 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3001/incense"; // تأكد من أن السيرفر يحتوي على هذه الراوتات
+const BASE_URL = "http://localhost:3001/incense"; 
 
-// =================== ASYNC THUNKS ===================
-
-// جلب كل البخور
 export const fetchIncense = createAsyncThunk("incense/fetchIncense", async () => {
   const res = await axios.get(BASE_URL);
   return res.data;
 });
 
-// إضافة بخور جديد
 export const addIncense = createAsyncThunk("incense/addIncense", async (formData) => {
   const res = await axios.post(`${BASE_URL}/add`, formData);
   return res.data.incense;
 });
 
-// تعديل بخور
 export const updateIncense = createAsyncThunk(
   "incense/updateIncense",
   async ({ id, data }) => {
@@ -26,7 +21,6 @@ export const updateIncense = createAsyncThunk(
   }
 );
 
-// حذف بخور
 export const deleteIncense = createAsyncThunk(
   "incense/deleteIncense",
   async (id) => {
@@ -35,7 +29,6 @@ export const deleteIncense = createAsyncThunk(
   }
 );
 
-// =================== SLICE ===================
 
 const incenseSlice = createSlice({
   name: "incense",

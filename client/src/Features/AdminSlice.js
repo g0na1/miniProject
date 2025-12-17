@@ -1,25 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// الحالة الأولية للأدمن
 const initialState = {
-  admin: null,       // بيانات الأدمن الحالية
-  isLogin: false,    // هل الأدمن مسجل دخول
-  status: null,      // 'loading', 'success', 'rejected'
-  msg: null,         // رسالة السيرفر أو الخطأ
+  admin: null,
+  isLogin: false,
+  status: null,
+  msg: null,
 };
 
-// Async thunk لتسجيل دخول الأدمن
 export const loginAdmin = createAsyncThunk(
   "admin/loginAdmin",
   async (adminData, { rejectWithValue }) => {
     try {
       const { email, password } = adminData;
-      const response = await axios.post("http://localhost:3001/admin/login", { email, password });
+      const response = await axios.post(
+        "http://localhost:3001/admin/login",
+        { email, password }
+      );
 
       return { admin: response.data.admin, msg: response.data.msg };
     } catch (error) {
-      return rejectWithValue({ msg: error.response?.data?.msg || "Login failed" });
+      return rejectWithValue({
+        msg: error.response?.data?.msg || "Login failed",
+      });
     }
   }
 );
@@ -51,7 +54,7 @@ export const adminSlice = createSlice({
         state.status = "rejected";
         state.isLogin = false;
         state.admin = null;
-        state.msg = action.payload?.msg || "حدث خطأ أثناء تسجيل الدخول";
+        state.msg = action.payload?.msg || "error when sign in";
       });
   },
 });

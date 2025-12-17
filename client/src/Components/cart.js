@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Table, Button, Spinner, Alert } from "reactstrap";
 import Header from "./Header";
 
-// 🔹 use DB thunks
+
 import {
   fetchCartDB,
   removeFromCartDB,
@@ -16,25 +16,24 @@ const Cart = () => {
 
   const { items, status, error } = useSelector((state) => state.cart);
 
-  const USER_ID = "123"; // temporary (replace later with auth user)
+  const USER_ID = "123"; 
 
-  // 🔹 Fetch cart from database on page load
+  
   useEffect(() => {
     dispatch(fetchCartDB(USER_ID));
   }, [dispatch]);
 
-  // 🔹 Remove item from DB + Redux
   const handleRemoveFromCart = (itemId) => {
     dispatch(removeFromCartDB(itemId));
   };
 
-  // 🔹 Calculate total price
+  
   const totalPrice = items.reduce(
     (total, item) => total + item.price * (item.quantity || 1),
     0
   );
 
-  // 🔹 Go to payment page
+
   const handleConfirmOrder = () => {
     navigate("/payment");
   };

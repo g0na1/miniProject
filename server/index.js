@@ -16,10 +16,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Serve uploaded images statically
 app.use('/uploads', express.static('uploads'));
 
-// Database connection
 const connectString =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@minicluster.luclkxl.mongodb.net/beauty?appName=miniCluster`; 
 
 async function main() {
@@ -44,7 +42,6 @@ async function createAdmin() {
   console.log("Admin created successfully");
 }
 
-// Multer setup for image upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
@@ -62,18 +59,16 @@ const upload = multer({
     if (extname) {
       return cb(null, true);
     } else {
-      cb(new Error('Error: File type not supported!')); // Improved error handling
+      cb(new Error('Error: File type not supported!')); 
     }
   }
 });
 
-// Centralized error handling middleware
 const errorHandler = (err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({ msg: err.message || "An unexpected error occurred." });
 };
 
-// User registration
 app.post("/registerUser", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -114,7 +109,6 @@ app.post("/admin/login", async (req, res) => {
   }
 });
 
-// Cream routes
 app.post("/creams/add", async (req, res) => {
   try {
     const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
@@ -153,7 +147,6 @@ app.delete("/creams/delete/:id", async (req, res) => {
   }
 });
 
-// Incense routes
 app.post("/incense/add", async (req, res) => {
   try {
     const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
@@ -194,7 +187,6 @@ app.delete("/incense/delete/:id", async (req, res) => {
   }
 });
 
-// Perfume routes
 app.post("/perfumes/add", async (req, res) => {
   try {
     const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
@@ -234,7 +226,6 @@ app.delete("/perfumes/delete/:id", async (req, res) => {
     res.status(500).json({ msg: "Error deleting perfume" });
   }
 });
-// 🛒 Add to Cart
 app.post("/api/cart/add", async (req, res) => {
   try {
     const { userId, productId, name, price, imageUrl } = req.body;
@@ -279,14 +270,11 @@ app.delete("/api/cart/:id", async (req, res) => {
 });
 
 
-// Centralized error handling middleware
 app.use(errorHandler);
 
-// Start server
 
 app.listen(process.env.PORT,() => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
 
-// Run main function
 main();

@@ -15,7 +15,6 @@ const Header = () => {
     <Navbar expand="md" className="header">
       <Col>
         <Row className="w-100 align-items-center"> 
-          {/* أيقونة البروفايل */}
           <Col xs="auto">
             <UncontrolledDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
               <DropdownToggle nav>
@@ -47,7 +46,6 @@ const Header = () => {
             </Nav>
           </Col>
 
-          {/* أيقونة السلة */}
           <Col xs="auto" className="cart-icon">
             <Link to="/cart" className="nav-link">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />

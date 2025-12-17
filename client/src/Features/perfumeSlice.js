@@ -1,34 +1,30 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3001/perfumes"; // Ensure this matches your server routes
+const BASE_URL = "http://localhost:3001/perfumes"; 
 
 export const fetchPerfumes = createAsyncThunk("perfume/fetchPerfumes", async () => {
   const res = await axios.get(BASE_URL);
-  return res.data; // Assuming res.data is an array of perfumes
+  return res.data; 
 });
 
-// Add a new perfume
 export const addPerfume = createAsyncThunk("perfume/addPerfume", async (formData) => {
   const res = await axios.post(`${BASE_URL}/add`, formData);
-  return res.data.perfume; // Assuming res.data.perfume gives the added perfume
+  return res.data.perfume; 
 });
 
-// Update an existing perfume
 export const updatePerfume = createAsyncThunk(
   "perfume/updatePerfume",
   async ({ id, data }) => {
     const res = await axios.put(`${BASE_URL}/update/${id}`, data);
-    return res.data.perfume; // Assuming res.data.perfume gives the updated perfume
-  }
+    return res.data.perfume; }
 );
 
-// Delete a perfume
 export const deletePerfume = createAsyncThunk(
   "perfume/deletePerfume",
   async (id) => {
     await axios.delete(`${BASE_URL}/delete/${id}`);
-    return id; // Return the ID for removing it from state
+    return id; 
   }
 );
 
@@ -37,7 +33,7 @@ const perfumeSlice = createSlice({
   initialState: {
     perfumes: [],
     status: null,
-    error: null, // Added error state
+    error: null, 
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -63,7 +59,7 @@ const perfumeSlice = createSlice({
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {
           state.status = 'failed';
-          state.error = action.error.message; // Capture error message
+          state.error = action.error.message; 
         }
       );
   }

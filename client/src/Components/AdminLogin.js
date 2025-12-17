@@ -14,12 +14,11 @@ const AdminLogin = () => {
 
  const onSubmit = (data) => {
   dispatch(loginAdmin({
-    email: data.email.trim(), // إزالة أي فراغات
+    email: data.email.trim(), 
     password: data.password
   }));
 };
 
-  // إذا تسجيل الدخول ناجح، نذهب للـ Dashboard
   React.useEffect(() => {
     if (isLogin) navigate("/admin-dashboard");
   }, [isLogin, navigate]);

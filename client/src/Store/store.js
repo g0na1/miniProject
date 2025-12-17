@@ -1,7 +1,6 @@
 // src/store.js
 import { configureStore } from "@reduxjs/toolkit";
 
-// استيراد جميع الـ slices
 import usersReducer from "../Features/UserSlice";
 import adminReducer from "../Features/AdminSlice";
 import creamReducer from "../Features/creamSlice";

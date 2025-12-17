@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 
 const UpdateCream = () => {
-  const { id } = useParams(); // الحصول على معرف الكريم من الـ URL
+  const { id } = useParams(); 
   const dispatch = useDispatch();
   const cream = useSelector((state) => state.cream.creams.find(c => c._id === id));
   const [formData, setFormData] = useState({

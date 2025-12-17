@@ -10,7 +10,7 @@ const Payment = () => {
     expiryDate: "",
     cvv: "",
   });
-  const [validationErrors, setValidationErrors] = useState({}); // للحفاظ على الأخطاء
+  const [validationErrors, setValidationErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,66 +22,61 @@ const Payment = () => {
 
   const validateForm = () => {
     const errors = {};
-    // التحقق من المدخلات
     if (paymentMethod === "card") {
       if (!formData.name) errors.name = "Name is required.";
-      if (!formData.cardNumber || formData.cardNumber.length !== 16) 
+      if (!formData.cardNumber || formData.cardNumber.length !== 16)
         errors.cardNumber = "Card number must be 16 digits.";
       if (!formData.expiryDate) errors.expiryDate = "Expiry date is required.";
-      if (!formData.cvv || formData.cvv.length !== 3) 
+      if (!formData.cvv || formData.cvv.length !== 3)
         errors.cvv = "CVV must be 3 digits.";
     }
-    return errors; // إرجاع الأخطاء
+    return errors;
   };
 
   const handlePayment = (e) => {
-    e.preventDefault(); // منع الإرسال الافتراضي للنموذج
-    const errors = validateForm(); // إجراء التحقق
+    e.preventDefault();
+    const errors = validateForm();
     if (Object.keys(errors).length > 0) {
-      setValidationErrors(errors); // إذا كان هناك أخطاء، اضبطها
-      return; // إذا كانت هناك أخطاء، لا تتابع
+      setValidationErrors(errors);
+      return;
     }
 
-    // إذا كانت جميع المدخلات صحيحة
-    setValidationErrors({}); // مسح الأخطاء السابقة
+    setValidationErrors({});
     setPurchaseCompleted(true);
-    // يمكنك إضافة منطق الدفع الفعلي هنا
   };
 
   return (
     <Container>
       <h2 className="mt-4">Payment Page</h2>
       <p>Please select your payment method and enter the details below:</p>
-      
+
       <Form onSubmit={handlePayment}>
-        {/* اختيار طريقة الدفع */}
         <FormGroup>
           <Label for="paymentMethod">Payment Method</Label>
           <div>
             <Label check>
-              <Input 
-                type="radio" 
-                name="paymentMethod" 
-                value="cash" 
-                checked={paymentMethod === "cash"} 
-                onChange={() => setPaymentMethod("cash")} 
+              <Input
+                type="radio"
+                name="paymentMethod"
+                value="cash"
+                checked={paymentMethod === "cash"}
+                onChange={() => setPaymentMethod("cash")}
               />
               Cash
             </Label>
             <Label check className="ml-3">
-              <Input 
-                type="radio" 
-                name="paymentMethod" 
-                value="card" 
-                checked={paymentMethod === "card"} 
-                onChange={() => setPaymentMethod("card")} 
+              <Input
+                type="radio"
+                name="paymentMethod"
+                value="card"
+                checked={paymentMethod === "card"}
+                onChange={() => setPaymentMethod("card")}
               />
               Credit Card
             </Label>
           </div>
         </FormGroup>
 
-        {/* نموذج إدخال بيانات البطاقة */}
         {paymentMethod === "card" && (
           <>
             <FormGroup>
@@ -95,8 +90,11 @@ const Payment = () => {
                 onChange={handleChange}
                 required
               />
-              {validationErrors.name && <p className="text-danger">{validationErrors.name}</p>}
+              {validationErrors.name && (
+                <p className="text-danger">{validationErrors.name}</p>
+              )}
             </FormGroup>
+
             <FormGroup>
               <Label for="cardNumber">Card Number</Label>
               <Input
@@ -109,8 +107,11 @@ const Payment = () => {
                 required
                 maxLength="16"
               />
-              {validationErrors.cardNumber && <p className="text-danger">{validationErrors.cardNumber}</p>}
+              {validationErrors.cardNumber && (
+                <p className="text-danger">{validationErrors.cardNumber}</p>
+              )}
             </FormGroup>
+
             <Row>
               <Col md={6}>
                 <FormGroup>
@@ -124,9 +125,12 @@ const Payment = () => {
                     onChange={handleChange}
                     required
                   />
-                  {validationErrors.expiryDate && <p className="text-danger">{validationErrors.expiryDate}</p>}
+                  {validationErrors.expiryDate && (
+                    <p className="text-danger">{validationErrors.expiryDate}</p>
+                  )}
                 </FormGroup>
               </Col>
+
               <Col md={6}>
                 <FormGroup>
                   <Label for="cvv">CVV</Label>
@@ -140,7 +144,9 @@ const Payment = () => {
                     required
                     maxLength="3"
                   />
-                  {validationErrors.cvv && <p className="text-danger">{validationErrors.cvv}</p>}
+                  {validationErrors.cvv && (
+                    <p className="text-danger">{validationErrors.cvv}</p>
+                  )}
                 </FormGroup>
               </Col>
             </Row>

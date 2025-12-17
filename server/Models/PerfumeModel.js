@@ -1,4 +1,3 @@
-// src/Models/PerfumeModel.js
 import mongoose from "mongoose";
 
 const PerfumeSchema = new mongoose.Schema(
@@ -6,7 +5,7 @@ const PerfumeSchema = new mongoose.Schema(
     name: { type: String, required: true },
     price: { type: Number, required: true },
     description: { type: String, required: true },
-    imageUrl: { type: String }, // يمكن حفظ رابط الصورة أو Base64
+    imageUrl: { type: String },
   },
   { timestamps: true }
 );

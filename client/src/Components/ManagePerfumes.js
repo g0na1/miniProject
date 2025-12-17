@@ -15,11 +15,9 @@ import {
   CardBody,
   CardTitle,
 } from "reactstrap";
-import { useNavigate } from "react-router-dom";
 
 const ManagePerfumes = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const perfumes = useSelector((state) => state.perfume.perfumes);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -152,7 +150,6 @@ const ManagePerfumes = () => {
         </CardBody>
       </Card>
 
-      {/* ====== TABLE ====== */}
       <h3 className="mb-3">Existing Perfumes</h3>
       <Table bordered striped>
         <thead>

@@ -26,11 +26,10 @@ const ManageIncense = () => {
     name: "",
     price: "",
     description: "",
-    imageUrl: "", // Changed from image to imageUrl
+    imageUrl: "",
   });
   const [editingId, setEditingId] = useState(null);
 
-  // Load incense from server
   useEffect(() => {
     setLoading(true);
     const loadIncense = async () => {
@@ -56,7 +55,7 @@ const ManageIncense = () => {
     setError(null);
     setSuccess(null);
 
-    const data = { ...formData }; // Keep as object format for URL
+    const data = { ...formData }; 
 
     try {
       if (editingId) {
@@ -81,7 +80,7 @@ const ManageIncense = () => {
       name: item.name,
       price: item.price,
       description: item.description,
-      imageUrl: item.imageUrl, // Changed from image to imageUrl
+      imageUrl: item.imageUrl, 
     });
   };
 
@@ -136,7 +135,7 @@ const ManageIncense = () => {
             </FormGroup>
 
             <FormGroup>
-              <Label>Image URL</Label> {/* Changed label */}
+              <Label>Image URL</Label> 
               <Input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} required placeholder="Enter the image URL" />
             </FormGroup>
 
@@ -151,7 +150,6 @@ const ManageIncense = () => {
         </CardBody>
       </Card>
 
-      {/* ====== TABLE ====== */}
       <h3 className="mb-3">Existing Incenses</h3>
       <Table bordered striped>
         <thead>

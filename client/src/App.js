@@ -44,7 +44,6 @@ const App = () => {
           </Routes>
         </div>
 
-        {/* الفوتر */}
         <Footer />
       </Container>
     </Router>

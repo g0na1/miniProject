@@ -3,13 +3,11 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:3001/creams";
 
-// Fetch all creams
 export const fetchCreams = createAsyncThunk("cream/fetchCreams", async () => {
   const res = await axios.get(BASE_URL);
   return res.data;
 });
 
-// Add new cream
 export const addCream = createAsyncThunk("cream/addCream", async (formData) => {
   const res = await axios.post(`${BASE_URL}/add`, formData);
   return res.data.cream;
@@ -24,7 +22,6 @@ export const updateCream = createAsyncThunk(
   }
 );
 
-// Delete cream
 export const deleteCream = createAsyncThunk(
   "cream/deleteCream",
   async (id) => {

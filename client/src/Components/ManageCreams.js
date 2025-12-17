@@ -28,7 +28,7 @@ const ManageCreams = () => {
     description: "",
     imageUrl: "",
   });
-  const [editingId, setEditingId] = useState(null); // New state for editing
+  const [editingId, setEditingId] = useState(null); 
 
   useEffect(() => {
     const loadCreams = async () => {

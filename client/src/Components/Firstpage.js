@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './First.css'; // تأكد من أن لديك التنسيقات هنا
+import './First.css'; 
 
 const First = () => {
   const navigate = useNavigate();

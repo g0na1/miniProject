@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../Features/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { userSchemaValidation } from "../Validations/UserValidations";
-import "./Login.css"; // استخدم نفس CSS الخاص بالـ Login
+import "./Login.css"; 
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Register = () => {
   }, [status, msg, navigate]);
 
   return (
-    <div className="login-page"> {/* استخدام نفس تصميم Login */}
+    <div className="login-page"> 
       <Container>
         <Row className="justify-content-center">
           <Col md="6" lg="5">

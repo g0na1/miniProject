@@ -1,49 +1,49 @@
 .header {
-  position: sticky; /* يبقى ثابت عند التمرير */
+  position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #2b004c; /* لون الهيدر البنفسجي الغامق */
+  background-color: #2b004c;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px 10px;
 }
 
 .nav-link {
-  color: #fff !important; /* استخدام !important للتأكد من أن هذا النمط مدعوم */
-  text-decoration: none; /* إزالة الخط السفلي */
-  font-weight: 600; /* جعل النص أكثر سمكًا */
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 600;
   padding: 8px 12px;
   border-radius: 5px;
   transition: background 0.3s;
 }
 
 .nav-link:hover {
-  background-color: #9ba812; /* لون الخلفية عند المرور */
+  background-color: #9ba812;
 }
 
 .dropdown-item {
-  font-size: 14px;  /* حجم نص العناصر */
-  color: #fff; /* تغيير نص العناصر في القائمة المنسدلة إلى الأبيض */
+  font-size: 14px;
+  color: #fff;
 }
 
 .dropdown-link {
-  color: #fff; /* تغيير لون نص الروابط في القائمة المنسدلة إلى الأبيض */
-  text-decoration: none; /* إزالة خط تحت النص */
+  color: #fff;
+  text-decoration: none;
 }
 
 .dropdown-link:hover {
-  background-color: #ff6600; /* لون الخلفية عند المرور */
-  color: white; /* لون النص عند المرور */
+  background-color: #ff6600;
+  color: white;
 }
 
 .profile-logo {
-  width: 50px; /* حجم مناسب للبروفايل */
-  height: 50px; /* الحجم المناسب */
-  border-radius: 50%; /* دائرة */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ff6600; /* حدود بسيطة لإبراز الصورة */
+  border: 2px solid #ff6600;
   transition: transform 0.3s;
 }
 
 .profile-logo:hover {
-  transform: scale(1.1); /* تأثير عند المرور */
+  transform: scale(1.1);
 }
