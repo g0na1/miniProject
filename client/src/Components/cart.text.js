@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Cart from "./cart";
 import { Provider } from "react-redux";
-import store from "../store"; // تأكدي من مسار store
+import store from "../store"; 
 import { BrowserRouter } from "react-router-dom";
 
 describe("Cart Component", () => {

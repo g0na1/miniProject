@@ -111,7 +111,7 @@ app.post("/admin/login", async (req, res) => {
 
 app.post("/creams/add", async (req, res) => {
   try {
-    const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
+    const { name, price, description, imageUrl } = req.body; 
     const newCream = await CreamModel.create({ name, price, description, imageUrl });
     res.send({ msg: "Cream added successfully", cream: newCream });
   } catch (error) {
@@ -129,8 +129,8 @@ app.get("/creams", async (req, res) => {
 });
 app.put("/creams/update/:id", async (req, res) => {
   try {
-    const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
-    const updateData = { name, price, description, imageUrl }; // تعديل هنا
+    const { name, price, description, imageUrl } = req.body; 
+    const updateData = { name, price, description, imageUrl };
     const updated = await CreamModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
     res.json({ msg: "Cream updated", cream: updated });
   } catch (error) {
@@ -149,7 +149,7 @@ app.delete("/creams/delete/:id", async (req, res) => {
 
 app.post("/incense/add", async (req, res) => {
   try {
-    const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
+    const { name, price, description, imageUrl } = req.body;
     const newIncense = await IncenseModel.create({ name, price, description, imageUrl });
     res.send({ msg: "Incense added successfully", incense: newIncense });
   } catch (error) {
@@ -169,8 +169,8 @@ app.get("/incense", async (req, res) => {
 
 app.put("/incense/update/:id", async (req, res) => {
   try {
-    const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
-    const updateData = { name, price, description, imageUrl }; // تعديل هنا
+    const { name, price, description, imageUrl } = req.body; 
+    const updateData = { name, price, description, imageUrl }; 
     const updated = await IncenseModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
     res.json({ msg: "Incense updated", incense: updated });
   } catch (error) {
@@ -189,7 +189,7 @@ app.delete("/incense/delete/:id", async (req, res) => {
 
 app.post("/perfumes/add", async (req, res) => {
   try {
-    const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
+    const { name, price, description, imageUrl } = req.body;
     const newPerfume = await PerfumeModel.create({ name, price, description, imageUrl });
     res.send({ msg: "Perfume added successfully", perfume: newPerfume });
   } catch (error) {
@@ -209,8 +209,8 @@ app.get("/perfumes", async (req, res) => {
 
 app.put("/perfumes/update/:id", async (req, res) => {
   try {
-    const { name, price, description, imageUrl } = req.body; // إضافة imageUrl
-    const updateData = { name, price, description, imageUrl }; // تعديل هنا
+    const { name, price, description, imageUrl } = req.body; 
+    const updateData = { name, price, description, imageUrl };
     const updated = await PerfumeModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
     res.json({ msg: "Perfume updated", perfume: updated });
   } catch (error) {
