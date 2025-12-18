@@ -14,7 +14,7 @@ export const loginAdmin = createAsyncThunk(
     try {
       const { email, password } = adminData;
       const response = await axios.post(
-        "http://localhost:3001/admin/login",
+          `${process.env.REACT_APP_API_URL}/admin/login`,
         { email, password }
       );
 

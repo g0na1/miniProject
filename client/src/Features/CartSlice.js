@@ -5,15 +5,17 @@ export const removeFromCartDB = createAsyncThunk(
   "cart/removeFromCartDB",
   async (cartItemId) => {
     await axios.delete(
-      `http://localhost:3001/api/cart/${cartItemId}`
-    );
+      
+  `${process.env.REACT_APP_API_URL}/api/cart/${cartItemId}`
+);
+
     return cartItemId;
   }
 );
 export const addToCartDB = createAsyncThunk(
   "cart/addToCartDB",
   async (item) => {
-    const res = await axios.post("http://localhost:3001/api/cart/add", {
+    const res = await axios.post( `${process.env.REACT_APP_API_URL}/api/cart/add`, {
       userId: "123",     
       productId: item._id,
       name: item.name,
