@@ -118,7 +118,6 @@ const ManagePerfumes = () => {
       {error && <Alert color="danger">{error}</Alert>}
       {success && <Alert color="success">{success}</Alert>}
 
-      {/* ====== FORM ====== */}
       <Card className="mb-5 shadow-sm">
         <CardBody>
           <CardTitle tag="h5">{editingId ? "Update Perfume" : "Add New Perfume"}</CardTitle>
